@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header from './masthead/Header';
 import JobFilter from './JobFilter';
 import Jobs from "../pages/Jobs";
 

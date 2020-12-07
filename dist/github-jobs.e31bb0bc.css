@@ -1,3 +1,28 @@
+.masthead {
+  background-image: url("/backgroundImg.f44d7848.png");
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 138px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.masthead .search {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 4px 5px 4px 17px;
+  max-width: 70%;
+}
+.masthead .search input {
+  height: 32px;
+  background: transparent;
+  border: none;
+}
 .details {
   display: flex;
   flex-direction: column;
