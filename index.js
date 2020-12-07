@@ -1,5 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./pages/App";
+import { GlobalContextProvider } from "./pages/GlobalContext";
 
 
-ReactDOM.render(<h1>Github Jobs</h1>, document.getElementById('root'))
+ReactDOM.render(
+    <GlobalContextProvider>
+        <App />
+    </GlobalContextProvider>, document.getElementById('root'))
