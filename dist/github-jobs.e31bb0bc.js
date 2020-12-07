@@ -32094,15 +32094,46 @@ const JobDetailStyle = _styledComponents.default.section`
         width: 90px;
         border-radius: 4px;
     }
+
+    .job-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 5px;
+        font-weight: 500;
+        font-size: 12px;
+        color: #B9BDCF;
+
+        .job-location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    }
 `;
 
 function Jobdetails({
   job
 }) {
+  const options = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric"
+  };
+  const today = new Date().toLocaleString("en-US", options);
+  const createdAt = new Date(job.created_at).toLocaleString("en-US", options);
+  const totalDate = new Date(today) - new Date(createdAt);
+  const daysAgo = Math.floor(totalDate / (1000 * 3600 * 24));
   return /*#__PURE__*/_react.default.createElement(JobDetailStyle, null, /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement("img", {
     src: job.company_logo,
     alt: `${job.title} at ${job.company}`
-  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("span", null, job.type)));
+  })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("span", null, job.type), /*#__PURE__*/_react.default.createElement("footer", {
+    className: "job-footer"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "job-location"
+  }, /*#__PURE__*/_react.default.createElement("span", null, job.location)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("time", {
+    dateTime: job.created_at
+  }, daysAgo, " ", daysAgo > 1 ? "days" : "day")))));
 }
 
 var _default = Jobdetails;

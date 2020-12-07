@@ -13,9 +13,31 @@ const JobDetailStyle = styled.section`
         width: 90px;
         border-radius: 4px;
     }
+
+    .job-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 5px;
+        font-weight: 500;
+        font-size: 12px;
+        color: #B9BDCF;
+
+        .job-location {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    }
 `;
 
 function Jobdetails({ job }) {
+    const options = { year: "numeric", month: "numeric", day: "numeric" };
+    const today = new Date().toLocaleString("en-US", options);
+    const createdAt = new Date(job.created_at).toLocaleString("en-US", options);
+    const totalDate = new Date(today) - new Date(createdAt)
+    const daysAgo = Math.floor( totalDate / (1000 * 3600 * 24));
+
     return (
         <JobDetailStyle>
             <h2>
@@ -25,6 +47,15 @@ function Jobdetails({ job }) {
                 <span>{job.company}</span>
                 <p>{job.title}</p>
                 <span>{job.type}</span>
+
+                <footer className="job-footer">
+                    <div className="job-location">
+                        <span>{job.location}</span>
+                    </div>
+                    <div>
+                        <time dateTime={job.created_at}>{daysAgo} {daysAgo > 1 ? "days" : "day"}</time>
+                    </div>
+                </footer>
             </div>
         </JobDetailStyle>
     )
