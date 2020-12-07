@@ -1,15 +1,17 @@
-import React, { useContext } from 'react'
-import Jobs from '../components/jobs';
-import { GlobalContext } from './GlobalContext';
+import React from 'react'
+import Header from '../components/Header';
+import JobFilter from '../components/JobFilter';
 
-function App() {
-    const { state } = useContext(GlobalContext);
-    const { githubJobs, loading } = state
-    console.log(githubJobs);
+import Jobs from "./Jobs";
+
+function App() { 
     return (
         <div>
-            {loading && <p>Loading...</p>}
-            {githubJobs.map(job => <Jobs key={job.id} job={job} />)}
+            <Header />
+            <div>
+                <JobFilter />
+                <Jobs />
+            </div>
         </div>
     )
 }

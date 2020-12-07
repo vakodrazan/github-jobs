@@ -29772,7 +29772,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/jobs.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29784,13 +29784,85 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Jobs({
+function Header() {
+  return /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Github Jobs"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Title, companies, expertise or benefits"
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    "aria-label": "search"
+  }, "Search"))));
+}
+
+var _default = Header;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"components/JobFilter.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function JobFilter() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    id: "full-time"
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "full-time"
+  }, "Full time")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "location"
+  }, "Location"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    id: "location",
+    placeholder: "City, state, zip code or country"
+  }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    id: "london"
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "london"
+  }, "Lodon")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    id: "amsterdam"
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "amsterdam"
+  }, "Amsterdam")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    id: "new-york"
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "new-york"
+  }, "New York")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "checkbox",
+    id: "berlin"
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "berlin"
+  }, "Berlin"))));
+}
+
+var _default = JobFilter;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"components/Jobdetails.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Jobdetails({
   job
 }) {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, job.location));
 }
 
-var _default = Jobs;
+var _default = Jobdetails;
 exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"pages/GlobalContext.js":[function(require,module,exports) {
 "use strict";
@@ -29832,7 +29904,7 @@ function GlobalContextProvider({
     githubJobs: [],
     loading: true
   });
-  const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description&page";
+  const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description";
 
   async function fetchJobs() {
     const res = await fetch(END_POINT);
@@ -29853,7 +29925,7 @@ function GlobalContextProvider({
     }
   }, children);
 }
-},{"react":"node_modules/react/index.js"}],"pages/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"pages/Jobs.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29863,7 +29935,7 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _jobs = _interopRequireDefault(require("../components/jobs"));
+var _Jobdetails = _interopRequireDefault(require("../components/Jobdetails"));
 
 var _GlobalContext = require("./GlobalContext");
 
@@ -29873,7 +29945,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function App() {
+function Jobs() {
   const {
     state
   } = (0, _react.useContext)(_GlobalContext.GlobalContext);
@@ -29881,16 +29953,39 @@ function App() {
     githubJobs,
     loading
   } = state;
-  console.log(githubJobs);
-  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_jobs.default, {
+  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_Jobdetails.default, {
     key: job.id,
     job: job
   })));
 }
 
+var _default = Jobs;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../components/Jobdetails":"components/Jobdetails.js","./GlobalContext":"pages/GlobalContext.js"}],"pages/App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Header = _interopRequireDefault(require("../components/Header"));
+
+var _JobFilter = _interopRequireDefault(require("../components/JobFilter"));
+
+var _Jobs = _interopRequireDefault(require("./Jobs"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function App() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_JobFilter.default, null), /*#__PURE__*/_react.default.createElement(_Jobs.default, null)));
+}
+
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../components/jobs":"components/jobs.js","./GlobalContext":"pages/GlobalContext.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../components/Header":"components/Header.js","../components/JobFilter":"components/JobFilter.js","./Jobs":"pages/Jobs.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

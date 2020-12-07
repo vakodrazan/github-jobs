@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Jobs({ job }) {
+function Jobdetails({ job }) {
     return (
         <div>
             <p>{job.location}</p>
@@ -8,4 +8,4 @@ function Jobs({ job }) {
     )
 }
 
-export default Jobs
+export default Jobdetails

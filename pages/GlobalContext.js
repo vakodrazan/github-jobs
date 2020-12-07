@@ -20,7 +20,7 @@ function GlobalContextProvider({ children }) {
         githubJobs: [],
         loading: true
     })
-    const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description&page";
+    const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description";
     async function fetchJobs() {
         const res = await fetch(END_POINT);
         const data = await res.json();
