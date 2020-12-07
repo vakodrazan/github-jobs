@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const JobDetailStyle = styled.section`
+const JobListStyle = styled.section`
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 10px;
@@ -31,7 +31,7 @@ const JobDetailStyle = styled.section`
     }
 `;
 
-function Jobdetails({ job }) {
+function JobLists({ job }) {
     const options = { year: "numeric", month: "numeric", day: "numeric" };
     const today = new Date().toLocaleString("en-US", options);
     const createdAt = new Date(job.created_at).toLocaleString("en-US", options);
@@ -39,7 +39,7 @@ function Jobdetails({ job }) {
     const daysAgo = Math.floor( totalDate / (1000 * 3600 * 24));
 
     return (
-        <JobDetailStyle>
+        <JobListStyle>
             <h2>
                 {job.company_logo === null 
                     ? <div>Not found</div> 
@@ -60,8 +60,8 @@ function Jobdetails({ job }) {
                     </div>
                 </footer>
             </div>
-        </JobDetailStyle>
+        </JobListStyle>
     )
 }
 
-export default Jobdetails
+export default JobLists

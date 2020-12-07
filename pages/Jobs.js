@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components';
-import JobDetails from "../components/Jobdetails"
+import JobDetails from "../components/JobLists"
 import { GlobalContext } from './GlobalContext';
 
 const JobsStyle = styled.article`

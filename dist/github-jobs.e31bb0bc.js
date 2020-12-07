@@ -32068,7 +32068,7 @@ exports.ServerStyleSheet = Ue;
 "production" !== "development" && "undefined" != typeof navigator && "ReactNative" === navigator.product && console.warn("It looks like you've imported 'styled-components' on React Native.\nPerhaps you're looking to import 'styled-components/native'?\nRead more about this at https://www.styled-components.com/docs/basics#react-native"), "production" !== "development" && "test" !== "development" && (window["__styled-components-init__"] = window["__styled-components-init__"] || 0, 1 === window["__styled-components-init__"] && console.warn("It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.\n\nSee https://s-c.sh/2BAXzed for more info."), window["__styled-components-init__"] += 1);
 var _default = qe;
 exports.default = _default;
-},{"react-is":"node_modules/react-is/index.js","react":"node_modules/react/index.js","shallowequal":"node_modules/shallowequal/index.js","@emotion/stylis":"node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"components/Jobdetails.js":[function(require,module,exports) {
+},{"react-is":"node_modules/react-is/index.js","react":"node_modules/react/index.js","shallowequal":"node_modules/shallowequal/index.js","@emotion/stylis":"node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"components/JobLists.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32082,7 +32082,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const JobDetailStyle = _styledComponents.default.section`
+const JobListStyle = _styledComponents.default.section`
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 10px;
@@ -32112,7 +32112,7 @@ const JobDetailStyle = _styledComponents.default.section`
     }
 `;
 
-function Jobdetails({
+function JobLists({
   job
 }) {
   const options = {
@@ -32124,7 +32124,7 @@ function Jobdetails({
   const createdAt = new Date(job.created_at).toLocaleString("en-US", options);
   const totalDate = new Date(today) - new Date(createdAt);
   const daysAgo = Math.floor(totalDate / (1000 * 3600 * 24));
-  return /*#__PURE__*/_react.default.createElement(JobDetailStyle, null, /*#__PURE__*/_react.default.createElement("h2", null, job.company_logo === null ? /*#__PURE__*/_react.default.createElement("div", null, "Not found") : /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement(JobListStyle, null, /*#__PURE__*/_react.default.createElement("h2", null, job.company_logo === null ? /*#__PURE__*/_react.default.createElement("div", null, "Not found") : /*#__PURE__*/_react.default.createElement("img", {
     src: job.company_logo,
     alt: `${job.title} at ${job.company}`
   })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("span", null, job.type), /*#__PURE__*/_react.default.createElement("footer", {
@@ -32136,7 +32136,7 @@ function Jobdetails({
   }, daysAgo, " ", daysAgo > 1 ? "days" : "day")))));
 }
 
-var _default = Jobdetails;
+var _default = JobLists;
 exports.default = _default;
 },{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"pages/GlobalContext.js":[function(require,module,exports) {
 "use strict";
@@ -32211,7 +32211,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _Jobdetails = _interopRequireDefault(require("../components/Jobdetails"));
+var _JobLists = _interopRequireDefault(require("../components/JobLists"));
 
 var _GlobalContext = require("./GlobalContext");
 
@@ -32235,7 +32235,7 @@ function Jobs() {
     githubJobs,
     loading
   } = state;
-  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement(JobsStyle, null, githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_Jobdetails.default, {
+  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement(JobsStyle, null, githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_JobLists.default, {
     key: job.id,
     job: job
   }))));
@@ -32243,7 +32243,7 @@ function Jobs() {
 
 var _default = Jobs;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../components/Jobdetails":"components/Jobdetails.js","./GlobalContext":"pages/GlobalContext.js"}],"pages/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../components/JobLists":"components/JobLists.js","./GlobalContext":"pages/GlobalContext.js"}],"pages/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
