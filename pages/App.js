@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { GlobalContext } from './GlobalContext'
+import Jobs from '../components/jobs';
+import { GlobalContext } from './GlobalContext';
 
 function App() {
     const { state } = useContext(GlobalContext);
@@ -8,7 +9,7 @@ function App() {
     return (
         <div>
             {loading && <p>Loading...</p>}
-            {githubJobs.map(jobs => <p key={jobs.id}>{jobs.company}</p>)}
+            {githubJobs.map(job => <Jobs key={job.id} job={job} />)}
         </div>
     )
 }

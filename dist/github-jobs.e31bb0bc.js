@@ -29772,7 +29772,27 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"pages/GlobalContext.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/jobs.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Jobs({
+  job
+}) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, job.location));
+}
+
+var _default = Jobs;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"pages/GlobalContext.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29812,7 +29832,7 @@ function GlobalContextProvider({
     githubJobs: [],
     loading: true
   });
-  const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description";
+  const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description&page";
 
   async function fetchJobs() {
     const res = await fetch(END_POINT);
@@ -29843,7 +29863,11 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _jobs = _interopRequireDefault(require("../components/jobs"));
+
 var _GlobalContext = require("./GlobalContext");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -29858,14 +29882,15 @@ function App() {
     loading
   } = state;
   console.log(githubJobs);
-  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), githubJobs.map(jobs => /*#__PURE__*/_react.default.createElement("p", {
-    key: jobs.id
-  }, jobs.company)));
+  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_jobs.default, {
+    key: job.id,
+    job: job
+  })));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./GlobalContext":"pages/GlobalContext.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../components/jobs":"components/jobs.js","./GlobalContext":"pages/GlobalContext.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29907,7 +29932,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53980" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58891" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
