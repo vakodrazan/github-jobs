@@ -1,0 +1,45 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  color: #334680;
+}
+.details .company-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.details .company-details h3 {
+  margin: 0;
+  padding-bottom: 5px;
+}
+.details .company-details span {
+  color: #B9BDCF;
+  font-weight: 500;
+  font-size: 12px;
+}
+.details .logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+}
+.details .logo-not-found {
+  border-radius: 4px;
+  width: 42px;
+  font-size: 12px;
+  background-color: #fff;
+  padding: 10px;
+}
+@media (min-width: 750px) {
+  .details {
+    flex-direction: row;
+    gap: 20px;
+  }
+  .details .details-sidebar {
+    flex-basis: 35%;
+  }
+  .details .details-content {
+    flex-basis: 60%;
+  }
+}
+
+/*# sourceMappingURL=/github-jobs.e31bb0bc.css.map */

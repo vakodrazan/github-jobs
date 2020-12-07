@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 const JobListStyle = styled.section`
@@ -8,7 +9,7 @@ const JobListStyle = styled.section`
     background-color: #fff;
     padding: 12px;
     border-radius: 4px;
-
+b
     img {
         width: 90px;
         border-radius: 4px;
@@ -39,28 +40,30 @@ function JobLists({ job }) {
     const daysAgo = Math.floor( totalDate / (1000 * 3600 * 24));
 
     return (
-        <JobListStyle>
-            <h2>
-                {job.company_logo === null 
-                    ? <div>Not found</div> 
-                    : <img src={job.company_logo} alt={`${job.title} at ${job.company}`} />
-                }
-            </h2>
-            <div>
-                <span>{job.company}</span>
-                <p>{job.title}</p>
-                <span>{job.type}</span>
+        <Link to={`/job/${job.id}`}>
+            <JobListStyle>
+                <h2>
+                    {job.company_logo === null 
+                        ? <div>Not found</div> 
+                        : <img src={job.company_logo} alt={`${job.title} at ${job.company}`} />
+                    }
+                </h2>
+                <div>
+                    <span>{job.company}</span>
+                    <p>{job.title}</p>
+                    <span>{job.type}</span>
 
-                <footer className="job-footer">
-                    <div className="job-location">
-                        <span>{job.location}</span>
-                    </div>
-                    <div>
-                        <time dateTime={job.created_at}>{daysAgo} {daysAgo > 1 ? "days" : "day"}</time>
-                    </div>
-                </footer>
-            </div>
-        </JobListStyle>
+                    <footer className="job-footer">
+                        <div className="job-location">
+                            <span>{job.location}</span>
+                        </div>
+                        <div>
+                            <time dateTime={job.created_at}>{daysAgo} {daysAgo > 1 ? "days" : "day"}</time>
+                        </div>
+                    </footer>
+                </div>
+            </JobListStyle>
+        </Link>
     )
 }
 

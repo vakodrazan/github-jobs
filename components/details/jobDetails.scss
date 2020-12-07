@@ -1,0 +1,46 @@
+.details {
+    display: flex;
+    flex-direction: column;
+    color: #334680;
+
+    .company-details{
+        h3 {
+            margin: 0;
+            padding-bottom: 5px;
+        }
+
+        span {
+            color: #B9BDCF;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 4px;
+    }
+
+    .logo-not-found {
+        border-radius: 4px;
+        width: 42px;
+        font-size: 12px;
+        background-color: #fff;
+        padding: 10px;
+    }
+    @media (min-width: 750px) {
+        flex-direction: row;
+        gap: 20px;
+
+        .details-sidebar {
+            flex-basis: 35%;
+        }
+        .details-content {
+            flex-basis: 60%;
+        }
+    }
+}

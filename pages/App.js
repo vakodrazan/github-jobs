@@ -1,16 +1,26 @@
 import React from 'react'
-import Header from '../components/Header';
-import JobFilter from '../components/JobFilter';
+import { Route, Switch } from 'react-router-dom';
 
-import Jobs from "./Jobs";
+import Home from '../components/Home';
+import Jobdetails from '../components/details/JobDetails';
 
 function App() { 
     return (
         <div>
-            <Header />
+            <header>
+                <h1>
+                    Github Jobs
+                </h1>
+            </header>
             <div>
-                <JobFilter />
-                <Jobs />
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path={`/job/:jobId`}>
+                        <Jobdetails />
+                    </Route>
+                </Switch>
             </div>
         </div>
     )
