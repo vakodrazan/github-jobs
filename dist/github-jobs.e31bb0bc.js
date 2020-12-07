@@ -32124,7 +32124,7 @@ function Jobdetails({
   const createdAt = new Date(job.created_at).toLocaleString("en-US", options);
   const totalDate = new Date(today) - new Date(createdAt);
   const daysAgo = Math.floor(totalDate / (1000 * 3600 * 24));
-  return /*#__PURE__*/_react.default.createElement(JobDetailStyle, null, /*#__PURE__*/_react.default.createElement("h2", null, /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement(JobDetailStyle, null, /*#__PURE__*/_react.default.createElement("h2", null, job.company_logo === null ? /*#__PURE__*/_react.default.createElement("div", null, "Not found") : /*#__PURE__*/_react.default.createElement("img", {
     src: job.company_logo,
     alt: `${job.title} at ${job.company}`
   })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("span", null, job.type), /*#__PURE__*/_react.default.createElement("footer", {

@@ -41,7 +41,10 @@ function Jobdetails({ job }) {
     return (
         <JobDetailStyle>
             <h2>
-                <img src={job.company_logo} alt={`${job.title} at ${job.company}`} />
+                {job.company_logo === null 
+                    ? <div>Not found</div> 
+                    : <img src={job.company_logo} alt={`${job.title} at ${job.company}`} />
+                }
             </h2>
             <div>
                 <span>{job.company}</span>
