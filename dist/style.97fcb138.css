@@ -1,0 +1,31 @@
+body {
+  background-color: #F6F7FB;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input {
+  border: none;
+  border-radius: 4px;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.container {
+  padding: 12px;
+}
+@media (min-width: 1140px) {
+  .container {
+    max-width: 1140px;
+    margin: auto;
+  }
+}
+
+/*# sourceMappingURL=/style.97fcb138.css.map */

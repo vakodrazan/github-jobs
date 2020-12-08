@@ -33901,7 +33901,7 @@ function GlobalContextProvider({
     githubJobs: [],
     loading: true
   });
-  const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?page=1";
+  const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
 
   async function fetchJobs() {
     const res = await fetch(END_POINT);
@@ -35994,10 +35994,24 @@ const JobListStyle = _styledComponents.default.section`
     background-color: #fff;
     padding: 12px;
     border-radius: 4px;
-b
+
     img {
         width: 90px;
+        height: 90px;
         border-radius: 4px;
+        background-color: #F2F2F2;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #F2F2F2;
+        border-radius: 4px;
+        width: 90px;
+        height: 90px;
+        font-weight: 500;
+        font-size: 12px;
+        color: #BDBDBD;
     }
 
     .job-footer {
@@ -36013,6 +36027,10 @@ b
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+
+        @media (min-width: 1140px) {
+            gap: 20px;
         }
     }
 `;
@@ -36031,7 +36049,9 @@ function JobLists({
   const daysAgo = Math.floor(totalDate / (1000 * 3600 * 24));
   return /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: `/job/${job.id}`
-  }, /*#__PURE__*/_react.default.createElement(JobListStyle, null, /*#__PURE__*/_react.default.createElement("h2", null, job.company_logo === null ? /*#__PURE__*/_react.default.createElement("div", null, "Not found") : /*#__PURE__*/_react.default.createElement("img", {
+  }, /*#__PURE__*/_react.default.createElement(JobListStyle, null, /*#__PURE__*/_react.default.createElement("h2", null, job.company_logo === null ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "logo"
+  }, "Not found") : /*#__PURE__*/_react.default.createElement("img", {
     src: job.company_logo,
     alt: `${job.title} at ${job.company}`
   })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, job.company), /*#__PURE__*/_react.default.createElement("p", null, job.title), /*#__PURE__*/_react.default.createElement("span", null, job.type), /*#__PURE__*/_react.default.createElement("footer", {
@@ -36149,10 +36169,27 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+const SearchLocationStyle = _styledComponents.default.div`
+    display: grid;
+    gap: 14px;
+
+    input {
+        height: 32px;
+        width: 80%;
+        background-color: #fff;
+        padding: 5px;
+        border: none;
+    }
+`;
+
 function JobLocationFIlter() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", {
+  function name(params) {}
+
+  return /*#__PURE__*/_react.default.createElement(SearchLocationStyle, null, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "location"
   }, "Location"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
@@ -36163,7 +36200,7 @@ function JobLocationFIlter() {
 
 var _default = JobLocationFIlter;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"components/filters/JobFilter.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/filters/JobFilter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36221,15 +36258,27 @@ var _Jobs = _interopRequireDefault(require("../pages/Jobs"));
 
 var _JobFilter = _interopRequireDefault(require("./filters/JobFilter"));
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+const JobContentStyle = _styledComponents.default.div`
+
+    @media (min-width: 1140px) {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 10px;
+    }
+
+`;
+
 function Home() {
-  return /*#__PURE__*/_react.default.createElement("main", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_JobFilter.default, null), /*#__PURE__*/_react.default.createElement(_Jobs.default, null)));
+  return /*#__PURE__*/_react.default.createElement("main", null, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(JobContentStyle, null, /*#__PURE__*/_react.default.createElement(_JobFilter.default, null), /*#__PURE__*/_react.default.createElement(_Jobs.default, null)));
 }
 
 var _default = Home;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./masthead/Header":"components/masthead/Header.js","../pages/Jobs":"pages/Jobs.js","./filters/JobFilter":"components/filters/JobFilter.js"}],"components/details/jobdetails.scss":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./masthead/Header":"components/masthead/Header.js","../pages/Jobs":"pages/Jobs.js","./filters/JobFilter":"components/filters/JobFilter.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/details/jobdetails.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);

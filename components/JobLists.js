@@ -9,10 +9,24 @@ const JobListStyle = styled.section`
     background-color: #fff;
     padding: 12px;
     border-radius: 4px;
-b
+
     img {
         width: 90px;
+        height: 90px;
         border-radius: 4px;
+        background-color: #F2F2F2;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #F2F2F2;
+        border-radius: 4px;
+        width: 90px;
+        height: 90px;
+        font-weight: 500;
+        font-size: 12px;
+        color: #BDBDBD;
     }
 
     .job-footer {
@@ -29,6 +43,10 @@ b
             align-items: center;
             gap: 5px;
         }
+
+        @media (min-width: 1140px) {
+            gap: 20px;
+        }
     }
 `;
 
@@ -44,7 +62,7 @@ function JobLists({ job }) {
             <JobListStyle>
                 <h2>
                     {job.company_logo === null 
-                        ? <div>Not found</div> 
+                        ? <div className="logo">Not found</div> 
                         : <img src={job.company_logo} alt={`${job.title} at ${job.company}`} />
                     }
                 </h2>

@@ -11,6 +11,7 @@
 }
 .masthead .search {
   background-color: white;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,8 +21,15 @@
 }
 .masthead .search input {
   height: 32px;
+  width: 60%;
   background: transparent;
   border: none;
+}
+.masthead .search button {
+  color: #fff;
+  background-color: #1E86FF;
+  height: 32px;
+  padding: 0 12px;
 }
 .details {
   display: flex;
