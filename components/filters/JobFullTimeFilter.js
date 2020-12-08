@@ -8,7 +8,7 @@ function JobFullTimeFilter() {
 
     function handleCheckbox(e) {
         setFullTime(prevTime => !prevTime)
-        const updatedJob = githubJobs.filter(job => job.type === e.target.name);
+        const updatedJob = githubJobs.filter(job => job.type.toLowerCase() === e.target.name.toLowerCase());
         if (fullTime) {
             dispatch({ type: "ALL_FULL_TIME_JOBS", githubJobs: updatedJob})
         }

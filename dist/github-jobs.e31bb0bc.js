@@ -36070,7 +36070,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 const JobsStyle = _styledComponents.default.article`
     display: grid;
     gap: 20px;
-    // grid-template-rows: 1fr 2fr;
 `;
 
 function Jobs() {
@@ -36081,7 +36080,7 @@ function Jobs() {
     githubJobs,
     loading
   } = state;
-  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement(JobsStyle, null, githubJobs.length === 0 ? /*#__PURE__*/_react.default.createElement("p", null, "Not found") : githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_JobLists.default, {
+  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement(JobsStyle, null, githubJobs.length === 0 && !loading ? /*#__PURE__*/_react.default.createElement("p", null, "Not found") : githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_JobLists.default, {
     key: job.id,
     job: job
   }))));
@@ -36117,7 +36116,7 @@ function JobFullTimeFilter() {
 
   function handleCheckbox(e) {
     setFullTime(prevTime => !prevTime);
-    const updatedJob = githubJobs.filter(job => job.type === e.target.name);
+    const updatedJob = githubJobs.filter(job => job.type.toLowerCase() === e.target.name.toLowerCase());
 
     if (fullTime) {
       dispatch({
