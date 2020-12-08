@@ -33901,7 +33901,7 @@ function GlobalContextProvider({
     githubJobs: [],
     loading: true
   });
-  const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
+  const END_POINT = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?page=1";
 
   async function fetchJobs() {
     const res = await fetch(END_POINT);
@@ -36080,7 +36080,7 @@ function Jobs() {
     githubJobs,
     loading
   } = state;
-  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement(JobsStyle, null, githubJobs.length === 0 && !loading ? /*#__PURE__*/_react.default.createElement("p", null, "Not found") : githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_JobLists.default, {
+  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement(JobsStyle, null, githubJobs.length === 0 && !loading ? /*#__PURE__*/_react.default.createElement("p", null, "No results found") : githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_JobLists.default, {
     key: job.id,
     job: job
   }))));

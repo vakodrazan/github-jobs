@@ -16,7 +16,7 @@ function Jobs() {
             {loading && <p>Loading...</p>}
             <JobsStyle>
                 {githubJobs.length === 0 && !loading
-                    ? <p>Not found</p>
+                    ? <p>No results found</p>
                     : githubJobs.map(job => <JobDetails key={job.id} job={job} />)
                 }
             </JobsStyle>
