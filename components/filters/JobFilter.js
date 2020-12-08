@@ -1,17 +1,12 @@
 import React from 'react'
 import JobFullTimeFilter from './JobFullTimeFilter'
+import JobLocationFIlter from './JobLocationFIlter'
 
 function JobFilter() {
     return (
         <div>
             <JobFullTimeFilter />
-
-            <div>
-                <label htmlFor="location">Location</label>
-                <div>
-                    <input type="text" id="location" placeholder="City, state, zip code or country" />
-                </div>
-            </div>
+            <JobLocationFIlter />
 
             <div>
                 <div>
