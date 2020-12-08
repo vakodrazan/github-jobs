@@ -12,12 +12,13 @@ function Header() {
     function filterJobs(e) {
         e.preventDefault();
         const searchValue = searchForm.toLowerCase();
+        // Check if the jobs contains the value from the input
         const newUpdate = githubJobs.filter(jobs => 
             jobs.title.toLowerCase().includes(searchValue) 
             || jobs.company.toLowerCase().includes(searchValue)
         );
 
-            dispatch({ type: "FILTER_BY_KEYWORDS", githubJobs: newUpdate })
+        dispatch({ type: "FILTER_BY_KEYWORDS", githubJobs: newUpdate })
     }
 
     return (

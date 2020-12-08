@@ -34024,7 +34024,8 @@ function Header() {
 
   function filterJobs(e) {
     e.preventDefault();
-    const searchValue = searchForm.toLowerCase();
+    const searchValue = searchForm.toLowerCase(); // Check if the jobs contains the value from the input
+
     const newUpdate = githubJobs.filter(jobs => jobs.title.toLowerCase().includes(searchValue) || jobs.company.toLowerCase().includes(searchValue));
     dispatch({
       type: "FILTER_BY_KEYWORDS",
@@ -36080,7 +36081,7 @@ function Jobs() {
     githubJobs,
     loading
   } = state;
-  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement(JobsStyle, null, githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_JobLists.default, {
+  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement(JobsStyle, null, githubJobs.length === 0 ? /*#__PURE__*/_react.default.createElement("p", null, "Not found") : githubJobs.map(job => /*#__PURE__*/_react.default.createElement(_JobLists.default, {
     key: job.id,
     job: job
   }))));
