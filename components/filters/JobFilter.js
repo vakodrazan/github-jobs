@@ -1,12 +1,10 @@
 import React from 'react'
+import JobFullTimeFilter from './JobFullTimeFilter'
 
 function JobFilter() {
     return (
         <div>
-            <div>
-                <input type="checkbox" id="full-time" />
-                <label htmlFor="full-time">Full time</label>
-            </div>
+            <JobFullTimeFilter />
 
             <div>
                 <label htmlFor="location">Location</label>

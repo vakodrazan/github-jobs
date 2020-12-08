@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './masthead/Header';
-import JobFilter from './JobFilter';
 import Jobs from "../pages/Jobs";
+import JobFilter from './filters/JobFilter';
 
 function Home() {
     return (
