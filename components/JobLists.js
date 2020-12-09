@@ -9,6 +9,7 @@ const JobListStyle = styled.section`
     background-color: #fff;
     padding: 12px;
     border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 
     img {
         width: 90px;
@@ -53,9 +54,15 @@ const JobListStyle = styled.section`
             gap: 20px;
         }
     }
+
+    &:hover {
+        -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+        box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    }
 `;
 
 function JobLists({ job }) {
+    // Convert the date into a counter, count from how manyy days from now.
     const options = { year: "numeric", month: "numeric", day: "numeric" };
     const today = new Date().toLocaleString("en-US", options);
     const createdAt = new Date(job.created_at).toLocaleString("en-US", options);
@@ -66,6 +73,7 @@ function JobLists({ job }) {
         <Link to={`/job/${job.id}`}>
             <JobListStyle>
                 <h2>
+                    {/* Prevent from a bad image or there is nothing */}
                     {job.company_logo === null 
                         ? <div className="logo">Not found</div> 
                         : <img src={job.company_logo} alt={`${job.title} at ${job.company}`} />

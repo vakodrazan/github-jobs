@@ -49,11 +49,11 @@ function JobFilter() {
     }
 
     return (
-        <div>
+        <div className="filters">
             <JobFullTimeFilter />
             <JobLocationFIlter location={location} setLocation={setLocation} />
 
-            <div>
+            <div className="filter-city">
                 {cities.map(city => (
                     <div key={city.id}>
                         <input onChange={(e) => handLocation(e, city)} name={city.name} type="checkbox" id={city.id} />

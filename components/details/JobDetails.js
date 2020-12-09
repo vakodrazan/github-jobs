@@ -55,7 +55,10 @@ function Jobdetails() {
                     }
                     <div>
                         <h3>{findJob.company}</h3>
-                        <span>{findJob.location}</span>
+                        <div className="location">
+                            <i className="ri-earth-line"></i>
+                            <span>{findJob.location}</span>
+                        </div>
                     </div>
                 </div>
                 <div 

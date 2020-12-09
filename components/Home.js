@@ -5,9 +5,10 @@ import JobFilter from './filters/JobFilter';
 import styled from 'styled-components';
 
 const JobContentStyle = styled.div`
+    display: grid;
+    gap: 25px;
 
     @media (min-width: 1140px) {
-        display: grid;
         grid-template-columns: 1fr 2fr;
         gap: 10px;
     }
@@ -16,7 +17,7 @@ const JobContentStyle = styled.div`
 
 function Home() {
     return (
-        <main>
+        <main >
             <Header />
             <JobContentStyle>
                 <JobFilter />

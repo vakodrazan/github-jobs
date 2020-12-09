@@ -20,9 +20,6 @@ function JobLocationFIlter({ location, setLocation}) {
     const { state, dispatch } = useContext(GlobalContext);
     const { githubJobs } = state;
 
-    // const [location, setLocation] = useState("");
-    
-
     function handleLocation(e) {
         const newJobs = githubJobs.filter(job => job.location.toLowerCase().includes(location));
         if (e.key === 'Enter') {

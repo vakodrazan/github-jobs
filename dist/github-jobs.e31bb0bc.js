@@ -36012,6 +36012,7 @@ const JobListStyle = _styledComponents.default.section`
     background-color: #fff;
     padding: 12px;
     border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 
     img {
         width: 90px;
@@ -36056,11 +36057,17 @@ const JobListStyle = _styledComponents.default.section`
             gap: 20px;
         }
     }
+
+    &:hover {
+        -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+        box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    }
 `;
 
 function JobLists({
   job
 }) {
+  // Convert the date into a counter, count from how manyy days from now.
   const options = {
     year: "numeric",
     month: "numeric",
@@ -36228,7 +36235,7 @@ function JobLocationFIlter({
   } = (0, _react.useContext)(_GlobalContext.GlobalContext);
   const {
     githubJobs
-  } = state; // const [location, setLocation] = useState("");
+  } = state;
 
   function handleLocation(e) {
     const newJobs = githubJobs.filter(job => job.location.toLowerCase().includes(location));
@@ -36320,10 +36327,14 @@ function JobFilter() {
     }
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_JobFullTimeFilter.default, null), /*#__PURE__*/_react.default.createElement(_JobLocationFIlter.default, {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "filters"
+  }, /*#__PURE__*/_react.default.createElement(_JobFullTimeFilter.default, null), /*#__PURE__*/_react.default.createElement(_JobLocationFIlter.default, {
     location: location,
     setLocation: setLocation
-  }), /*#__PURE__*/_react.default.createElement("div", null, cities.map(city => /*#__PURE__*/_react.default.createElement("div", {
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "filter-city"
+  }, cities.map(city => /*#__PURE__*/_react.default.createElement("div", {
     key: city.id
   }, /*#__PURE__*/_react.default.createElement("input", {
     onChange: e => handLocation(e, city),
@@ -36358,9 +36369,10 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const JobContentStyle = _styledComponents.default.div`
+    display: grid;
+    gap: 25px;
 
     @media (min-width: 1140px) {
-        display: grid;
         grid-template-columns: 1fr 2fr;
         gap: 10px;
     }
@@ -36448,7 +36460,11 @@ function Jobdetails() {
     className: "logo",
     src: findJob.company_logo,
     alt: (findJob.title, findJob.company)
-  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, findJob.company), /*#__PURE__*/_react.default.createElement("span", null, findJob.location))), /*#__PURE__*/_react.default.createElement("div", {
+  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, findJob.company), /*#__PURE__*/_react.default.createElement("div", {
+    className: "location"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-earth-line"
+  }), /*#__PURE__*/_react.default.createElement("span", null, findJob.location)))), /*#__PURE__*/_react.default.createElement("div", {
     dangerouslySetInnerHTML: {
       __html: findJob.description
     }

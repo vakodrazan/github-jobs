@@ -13,6 +13,11 @@ input {
   border-radius: 4px;
 }
 
+main {
+  display: grid;
+  gap: 25px;
+}
+
 a {
   color: currentColor;
   text-decoration: none;
@@ -26,6 +31,12 @@ a {
     max-width: 1140px;
     margin: auto;
   }
+}
+
+.filters,
+.filter-city {
+  display: grid;
+  gap: 22px;
 }
 
 /*# sourceMappingURL=/style.97fcb138.css.map */
