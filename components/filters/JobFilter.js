@@ -55,7 +55,7 @@ function JobFilter() {
 
             <div className="filter-city">
                 {cities.map(city => (
-                    <div key={city.id}>
+                    <div key={city.id} className="cities">
                         <input onChange={(e) => handLocation(e, city)} name={city.name} type="checkbox" id={city.id} />
                         <label htmlFor={city.id}>{city.name}</label>
                     </div>

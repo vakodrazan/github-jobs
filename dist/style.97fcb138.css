@@ -33,10 +33,17 @@ a {
   }
 }
 
-.filters,
-.filter-city {
-  display: grid;
-  gap: 22px;
+.filters {
+  padding-top: 2rem;
+}
+.filters .filter-city {
+  padding-top: 2rem;
+}
+.filters .filter-city .cities {
+  padding-bottom: 1rem;
+}
+.filters .fulltime {
+  padding-bottom: 2rem;
 }
 
 /*# sourceMappingURL=/style.97fcb138.css.map */

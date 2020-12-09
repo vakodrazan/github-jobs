@@ -36180,7 +36180,9 @@ function JobFullTimeFilter() {
     }
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "fulltime"
+  }, /*#__PURE__*/_react.default.createElement("input", {
     type: "checkbox",
     id: "full-time",
     name: "Full Time",
@@ -36335,7 +36337,8 @@ function JobFilter() {
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "filter-city"
   }, cities.map(city => /*#__PURE__*/_react.default.createElement("div", {
-    key: city.id
+    key: city.id,
+    className: "cities"
   }, /*#__PURE__*/_react.default.createElement("input", {
     onChange: e => handLocation(e, city),
     name: city.name,

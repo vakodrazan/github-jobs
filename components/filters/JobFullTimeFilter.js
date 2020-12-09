@@ -15,7 +15,7 @@ function JobFullTimeFilter() {
     }
 
     return (
-        <div>
+        <div className="fulltime">
             <input 
                 type="checkbox" 
                 id="full-time" 

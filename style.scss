@@ -32,8 +32,18 @@ a {
     }
 }
 
-.filters,
-.filter-city {
-    display: grid;
-    gap: 22px;
+.filters {
+    padding-top: 2rem;
+
+    .filter-city {
+        padding-top: 2rem;
+
+        .cities {
+            padding-bottom: 1rem;
+        }
+    }
+    .fulltime {
+        padding-bottom: 2rem;
+    }
+
 }
