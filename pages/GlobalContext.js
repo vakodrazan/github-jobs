@@ -19,6 +19,20 @@ function GlobalContextProvider({ children }) {
                     githubJobs: action.githubJobs
                 }
             }
+            case "SEARCH_BY_LOCATION": {
+                return {
+                    ...state,
+                    loading: false,
+                    githubJobs: action.newJobs
+                }
+            }
+            case "JOBS_LOCATION": {
+                return {
+                    ...state,
+                    loading: false,
+                    githubJobs: action.data
+                }
+            }
             default: {
                 return state
             }

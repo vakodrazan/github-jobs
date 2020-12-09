@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
+import { GlobalContext } from '../../pages/GlobalContext';
 
 
 const SearchLocationStyle = styled.div`
@@ -15,11 +16,19 @@ const SearchLocationStyle = styled.div`
     }
 `;
 
-function JobLocationFIlter() {
-    function name(params) {
-        
-    }
+function JobLocationFIlter({ location, setLocation}) { 
+    const { state, dispatch } = useContext(GlobalContext);
+    const { githubJobs } = state;
 
+    // const [location, setLocation] = useState("");
+    
+
+    function handleLocation(e) {
+        const newJobs = githubJobs.filter(job => job.location.toLowerCase().includes(location));
+        if (e.key === 'Enter') {
+            dispatch({ type: "SEARCH_BY_LOCATION", newJobs})
+        }
+    }
     return (
         <SearchLocationStyle>
             <label htmlFor="location">Location</label>
@@ -27,6 +36,9 @@ function JobLocationFIlter() {
                 <input 
                     type="text" id="location" 
                     placeholder="City, state, zip code or country" 
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    onKeyDown={handleLocation}
                 />
             </div>
         </SearchLocationStyle>
