@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../pages/GlobalContext';
 
 function JobFullTimeFilter() {
@@ -7,9 +7,9 @@ function JobFullTimeFilter() {
     const [fullTime, setFullTime] = useState(false);
 
     function handleCheckbox(e) {
-        setFullTime(prevTime => !prevTime)
-        const updatedJob = githubJobs.filter(job => job.type.toLowerCase() === e.target.name.toLowerCase());
+        setFullTime(prevTime => !prevTime);
         if (fullTime) {
+            const updatedJob = githubJobs.filter(job => job.type.toLowerCase() === e.target.name.toLowerCase());
             dispatch({ type: "ALL_FULL_TIME_JOBS", githubJobs: updatedJob})
         }
     }
@@ -20,7 +20,6 @@ function JobFullTimeFilter() {
                 type="checkbox" 
                 id="full-time" 
                 name="Full Time"
-                checked={fullTime}
                 onChange={handleCheckbox}
             />
             <label htmlFor="full-time">Full time</label>

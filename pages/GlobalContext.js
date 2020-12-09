@@ -26,7 +26,7 @@ function GlobalContextProvider({ children }) {
                     githubJobs: action.newJobs
                 }
             }
-            case "JOBS_LOCATION": {
+            case "JOBS_FILTER": {
                 return {
                     ...state,
                     loading: false,

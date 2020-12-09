@@ -4,25 +4,26 @@ import JobFullTimeFilter from './JobFullTimeFilter'
 import JobLocationFIlter from './JobLocationFIlter'
 
 function JobFilter() {
-    const { state, dispatch } = useContext(GlobalContext);
+    const { dispatch } = useContext(GlobalContext);
 
     const [location, setLocation] = useState("");
 
     const url = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=python"
-    async function getJobsLocation() {
-        const res = await fetch(`${url}&location=${location}`)
+    async function getJobsLocation(location, full_time) {
+        const res = await fetch(`${url}&location=${location}&full_time=${full_time ? "on" : ""}`)
         const data = await res.json();
-        dispatch({ type: "JOBS_LOCATION", data})
+        dispatch({ type: "JOBS_FILTER", data })
     }
 
     useEffect(() => {
-        getJobsLocation()
+        getJobsLocation(location)
     }, [])
 
     function handLocation(e) {
+        // If it checked, run the new array
         if (e.target.checked) {
             setLocation(e.target.name)
-            getJobsLocation()
+            getJobsLocation(location);
         }
     }
 
@@ -37,15 +38,15 @@ function JobFilter() {
                     <label htmlFor="london">Lodon</label>
                 </div>
                 <div>
-                    <input onClick={handLocation} name="amsterdam" type="checkbox" id="amsterdam" />
+                    <input onChange={handLocation} name="amsterdam" type="checkbox" id="amsterdam" />
                     <label htmlFor="amsterdam">Amsterdam</label>
                 </div>
                 <div>
-                    <input onClick={handLocation} name="new york" type="checkbox" id="new-york" />
+                    <input onChange={handLocation} name="new york" type="checkbox" id="new-york" />
                     <label htmlFor="new-york">New York</label>
                 </div>
                 <div>
-                    <input onClick={handLocation} name="berlin" type="checkbox" id="berlin" />
+                    <input onChange={handLocation} name="berlin" type="checkbox" id="berlin" />
                     <label htmlFor="berlin">Berlin</label>
                 </div>
             </div>

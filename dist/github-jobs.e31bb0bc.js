@@ -33900,7 +33900,7 @@ function GlobalContextProvider({
           };
         }
 
-      case "JOBS_LOCATION":
+      case "JOBS_FILTER":
         {
           return { ...state,
             loading: false,
@@ -36152,9 +36152,9 @@ function JobFullTimeFilter() {
 
   function handleCheckbox(e) {
     setFullTime(prevTime => !prevTime);
-    const updatedJob = githubJobs.filter(job => job.type.toLowerCase() === e.target.name.toLowerCase());
 
     if (fullTime) {
+      const updatedJob = githubJobs.filter(job => job.type.toLowerCase() === e.target.name.toLowerCase());
       dispatch({
         type: "ALL_FULL_TIME_JOBS",
         githubJobs: updatedJob
@@ -36166,7 +36166,6 @@ function JobFullTimeFilter() {
     type: "checkbox",
     id: "full-time",
     name: "Full Time",
-    checked: fullTime,
     onChange: handleCheckbox
   }), /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "full-time"
@@ -36269,29 +36268,29 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function JobFilter() {
   const {
-    state,
     dispatch
   } = (0, _react.useContext)(_GlobalContext.GlobalContext);
   const [location, setLocation] = (0, _react.useState)("");
   const url = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=python";
 
-  async function getJobsLocation() {
-    const res = await fetch(`${url}&location=${location}`);
+  async function getJobsLocation(location, full_time) {
+    const res = await fetch(`${url}&location=${location}&full_time=${full_time ? "on" : ""}`);
     const data = await res.json();
     dispatch({
-      type: "JOBS_LOCATION",
+      type: "JOBS_FILTER",
       data
     });
   }
 
   (0, _react.useEffect)(() => {
-    getJobsLocation();
+    getJobsLocation(location);
   }, []);
 
   function handLocation(e) {
+    // If it checked, run the new array
     if (e.target.checked) {
       setLocation(e.target.name);
-      getJobsLocation();
+      getJobsLocation(location);
     }
   }
 
@@ -36306,21 +36305,21 @@ function JobFilter() {
   }), /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "london"
   }, "Lodon")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
-    onClick: handLocation,
+    onChange: handLocation,
     name: "amsterdam",
     type: "checkbox",
     id: "amsterdam"
   }), /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "amsterdam"
   }, "Amsterdam")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
-    onClick: handLocation,
+    onChange: handLocation,
     name: "new york",
     type: "checkbox",
     id: "new-york"
   }), /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "new-york"
   }, "New York")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
-    onClick: handLocation,
+    onChange: handLocation,
     name: "berlin",
     type: "checkbox",
     id: "berlin"
