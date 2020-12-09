@@ -24,12 +24,13 @@ function Header() {
     return (
         <header className="masthead">
             <form className="search" onSubmit={filterJobs}>
-                <input 
-                    type="text" 
-                    placeholder="Title, companies, expertise or benefits" 
-                    value={searchForm}
-                    onChange={(e) => setSearchForm(e.target.value)}
-                />
+                    <i className="ri-git-repository-private-line"></i>
+                    <input 
+                        type="text" 
+                        placeholder="Title, companies, expertise or benefits" 
+                        value={searchForm}
+                        onChange={(e) => setSearchForm(e.target.value)}
+                    />
                 <button aria-label="search">Search</button>
             </form>
         </header>

@@ -34054,7 +34054,9 @@ function Header() {
   }, /*#__PURE__*/_react.default.createElement("form", {
     className: "search",
     onSubmit: filterJobs
-  }, /*#__PURE__*/_react.default.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-git-repository-private-line"
+  }), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     placeholder: "Title, companies, expertise or benefits",
     value: searchForm,
