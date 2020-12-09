@@ -3,6 +3,10 @@
     flex-direction: column;
     color: #334680;
 
+    .details-sidebar {
+        word-break: break-all;
+    }
+
     .company-details{
         h3 {
             margin: 0;
