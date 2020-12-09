@@ -43,6 +43,11 @@ const JobListStyle = styled.section`
             align-items: center;
             gap: 5px;
         }
+        time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
 
         @media (min-width: 1140px) {
             gap: 20px;
@@ -73,10 +78,14 @@ function JobLists({ job }) {
 
                     <footer className="job-footer">
                         <div className="job-location">
+                            <i className="ri-earth-line"></i>
                             <span>{job.location}</span>
                         </div>
                         <div>
-                            <time dateTime={job.created_at}>{daysAgo} {daysAgo > 1 ? "days" : "day"}</time>
+                            <time dateTime={job.created_at}>
+                                <i className="ri-time-line"></i>
+                                {daysAgo} {daysAgo > 1 ? "days" : "day"}
+                            </time>
                         </div>
                     </footer>
                 </div>

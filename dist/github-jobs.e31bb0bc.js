@@ -36046,6 +36046,11 @@ const JobListStyle = _styledComponents.default.section`
             align-items: center;
             gap: 5px;
         }
+        time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
 
         @media (min-width: 1140px) {
             gap: 20px;
@@ -36076,9 +36081,13 @@ function JobLists({
     className: "job-footer"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "job-location"
-  }, /*#__PURE__*/_react.default.createElement("span", null, job.location)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("time", {
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-earth-line"
+  }), /*#__PURE__*/_react.default.createElement("span", null, job.location)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("time", {
     dateTime: job.created_at
-  }, daysAgo, " ", daysAgo > 1 ? "days" : "day"))))));
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-time-line"
+  }), daysAgo, " ", daysAgo > 1 ? "days" : "day"))))));
 }
 
 var _default = JobLists;
@@ -36273,6 +36282,19 @@ function JobFilter() {
     dispatch
   } = (0, _react.useContext)(_GlobalContext.GlobalContext);
   const [location, setLocation] = (0, _react.useState)("");
+  const cities = [{
+    name: "Lodon",
+    id: 1
+  }, {
+    name: "Amsterdam",
+    id: 2
+  }, {
+    name: "New York",
+    id: 3
+  }, {
+    name: "Berlin",
+    id: 4
+  }];
   const url = "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=python";
 
   async function getJobsLocation(location, full_time) {
@@ -36288,10 +36310,12 @@ function JobFilter() {
     getJobsLocation(location);
   }, []);
 
-  function handLocation(e) {
+  function handLocation(e, city) {
     // If it checked, run the new array
-    if (e.target.checked) {
-      setLocation(e.target.name);
+    if (e.target.checked && city.id === e.target.id) {
+      setLocation("");
+    } else {
+      setLocation(city.name);
       getJobsLocation(location);
     }
   }
@@ -36299,35 +36323,16 @@ function JobFilter() {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_JobFullTimeFilter.default, null), /*#__PURE__*/_react.default.createElement(_JobLocationFIlter.default, {
     location: location,
     setLocation: setLocation
-  }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
-    onChange: handLocation,
-    name: "london",
+  }), /*#__PURE__*/_react.default.createElement("div", null, cities.map(city => /*#__PURE__*/_react.default.createElement("div", {
+    key: city.id
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    onChange: e => handLocation(e, city),
+    name: city.name,
     type: "checkbox",
-    id: "london"
+    id: city.id
   }), /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "london"
-  }, "Lodon")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
-    onChange: handLocation,
-    name: "amsterdam",
-    type: "checkbox",
-    id: "amsterdam"
-  }), /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "amsterdam"
-  }, "Amsterdam")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
-    onChange: handLocation,
-    name: "new york",
-    type: "checkbox",
-    id: "new-york"
-  }), /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "new-york"
-  }, "New York")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
-    onChange: handLocation,
-    name: "berlin",
-    type: "checkbox",
-    id: "berlin"
-  }), /*#__PURE__*/_react.default.createElement("label", {
-    htmlFor: "berlin"
-  }, "Berlin"))));
+    htmlFor: city.id
+  }, city.name)))));
 }
 
 var _default = JobFilter;
@@ -36427,7 +36432,9 @@ function Jobdetails() {
     className: "details-content"
   }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h2", null, findJob.title), /*#__PURE__*/_react.default.createElement("span", null, findJob.type)), /*#__PURE__*/_react.default.createElement("time", {
     dateTime: findJob.created_at
-  }, daysAgo, " ", daysAgo > 1 ? "days" : "day"), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-time-line"
+  }), daysAgo, " ", daysAgo > 1 ? "days" : "day"), /*#__PURE__*/_react.default.createElement("div", {
     className: "company-details"
   }, findJob.company_logo === null ? /*#__PURE__*/_react.default.createElement("div", {
     className: "logo-not-found"

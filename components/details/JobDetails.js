@@ -36,7 +36,10 @@ function Jobdetails() {
                     <h2>{findJob.title}</h2>
                     <span>{findJob.type}</span>
                 </header>
-                <time dateTime={findJob.created_at}>{daysAgo} {daysAgo > 1 ? "days" : "day"}</time>
+                <time dateTime={findJob.created_at}>
+                    <i className="ri-time-line"></i>
+                    {daysAgo} {daysAgo > 1 ? "days" : "day"}
+                </time>
                 <div className="company-details">
                     {findJob.company_logo === null 
                         ? <div className="logo-not-found">Not found</div>
