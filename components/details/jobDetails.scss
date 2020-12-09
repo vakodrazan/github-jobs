@@ -3,6 +3,13 @@
     flex-direction: column;
     color: #334680;
 
+    .backToHomepage {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+    }
+
     .details-sidebar {
         word-break: break-all;
     }

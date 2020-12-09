@@ -36404,11 +36404,13 @@ function Jobdetails() {
   } = (0, _react.useContext)(_GlobalContext.GlobalContext);
   const {
     githubJobs
-  } = state;
+  } = state; // Find the id of the clicked item
+
   const {
     jobId
   } = (0, _reactRouterDom.useParams)();
-  const findJob = githubJobs.find(job => job.id === jobId);
+  const findJob = githubJobs.find(job => job.id === jobId); // Convert the date into how many days from the moment
+
   const options = {
     year: "numeric",
     month: "numeric",
@@ -36417,14 +36419,18 @@ function Jobdetails() {
   const today = new Date().toLocaleString("en-US", options);
   const createdAt = new Date(findJob.created_at).toLocaleString("en-US", options);
   const totalDate = new Date(today) - new Date(createdAt);
-  const daysAgo = Math.floor(totalDate / (1000 * 3600 * 24));
+  const daysAgo = Math.floor(totalDate / (1000 * 3600 * 24)); // Use `dangerouslySetInnerHTML` to convert the html element in the string into an active element
+
   return /*#__PURE__*/_react.default.createElement("article", {
     className: "details"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "details-sidebar"
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/"
-  }, "Back to search"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "How to Apply"), /*#__PURE__*/_react.default.createElement("div", {
+    to: "/",
+    className: "backToHomepage"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    className: "ri-arrow-left-line"
+  }), "Back to search"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "How to Apply"), /*#__PURE__*/_react.default.createElement("div", {
     dangerouslySetInnerHTML: {
       __html: findJob.how_to_apply
     }
